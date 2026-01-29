@@ -18,12 +18,17 @@ export function Card({
   elevated?: boolean;
   style?: StyleProp<ViewStyle>;
 }) {
+  const shadowColorStyle = elevated
+    ? { shadowColor: colors.shadow ?? "rgba(0,0,0,0.20)" }
+    : null;
+
   return (
     <View
       style={[
         styles.base,
         { backgroundColor: colors.card, borderColor: colors.border },
         elevated ? styles.shadow : null,
+        shadowColorStyle,
         style,
       ]}
     >

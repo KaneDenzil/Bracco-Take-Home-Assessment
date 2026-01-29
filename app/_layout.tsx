@@ -1,16 +1,12 @@
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 import {
   DarkTheme,
   DefaultTheme,
   ThemeProvider,
 } from "@react-navigation/native";
-import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
-import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
-import "react-native-reanimated";
-
-import { useColorScheme } from "react-native";
+import LottieView from "lottie-react-native";
+import React, { useEffect, useRef, useState } from "react";
+import { StyleSheet, View, useColorScheme } from "react-native";
 
 export { ErrorBoundary } from "expo-router";
 
@@ -18,38 +14,57 @@ export const unstable_settings = {
   initialRouteName: "index",
 };
 
-SplashScreen.preventAutoHideAsync();
-
-export default function RootLayout() {
-  const [loaded, error] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
-    ...FontAwesome.font,
-  });
+function LottieSplash({ onFinish }: { onFinish: () => void }) {
+  const ref = useRef<LottieView>(null);
 
   useEffect(() => {
-    if (error) throw error;
-  }, [error]);
+    ref.current?.play();
+  }, []);
 
-  useEffect(() => {
-    if (loaded) SplashScreen.hideAsync();
-  }, [loaded]);
-
-  if (!loaded) return null;
-
-  return <RootLayoutNav />;
+  return (
+    <View style={styles.splash}>
+      <LottieView
+        ref={ref}
+        source={require("../assets/Lottie/splash.json")}
+        autoPlay
+        loop={false}
+        onAnimationFinish={onFinish}
+        style={styles.lottie}
+      />
+    </View>
+  );
 }
 
-function RootLayoutNav() {
+export default function RootLayout() {
   const scheme = useColorScheme();
+  const [showSplash, setShowSplash] = useState(true);
 
   return (
     <ThemeProvider value={scheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack screenOptions={{ headerTitleAlign: "center" }}>
-        <Stack.Screen
-          name="index"
-          options={{ title: "Bracco Cashback Estimator" }}
-        />
-      </Stack>
+      <>
+        <Stack screenOptions={{ headerTitleAlign: "center" }}>
+          <Stack.Screen
+            name="index"
+            options={{ title: "Bracco Cashback Estimator" }}
+          />
+        </Stack>
+
+        {showSplash && <LottieSplash onFinish={() => setShowSplash(false)} />}
+      </>
     </ThemeProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  splash: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "#F15622",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 9999,
+  },
+  lottie: {
+    width: 280,
+    height: 280,
+  },
+});

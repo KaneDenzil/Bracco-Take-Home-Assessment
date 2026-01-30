@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-import { ThemePalette } from "../../../../src/types/types";
+import { type ThemePalette } from "../../../../src/types/types";
 import { BodyText } from "./ui";
 
 type HeaderBlock = {

@@ -2,7 +2,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-import { ThemePalette } from "@/src/types/types";
+import { type ThemePalette } from "@/src/types/types";
 import { ProgressBar } from "../../../components/ProgressBar";
 import { StatRow } from "../../../components/StatRow";
 import { formatCurrency, formatPercent } from "../../../domain/format";

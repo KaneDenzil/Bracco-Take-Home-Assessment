@@ -4,7 +4,7 @@ import { StyleSheet } from "react-native";
 import { Card } from "../../../components/Card";
 import { CompareBars } from "../../../components/CompareBars";
 
-import { ThemePalette } from "../../../../src/types/types";
+import { type ThemePalette } from "../../../../src/types/types";
 import type { Tier } from "../types";
 import { SectionTitle } from "./ui";
 

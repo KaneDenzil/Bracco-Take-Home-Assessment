@@ -1,8 +1,7 @@
 import React from "react";
 import { Text, View } from "react-native";
-import type { CashbackTier } from "../domain/cashback";
 import { formatCurrency } from "../domain/format";
-import { Colors } from "../types/types";
+import { type CashbackTier, type Colors } from "../types/types";
 
 type CompareBars = {
   tiers: CashbackTier[];

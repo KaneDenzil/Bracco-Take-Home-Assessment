@@ -4,7 +4,7 @@ import { Pressable, StyleSheet, View } from "react-native";
 import { Card } from "../../../components/Card";
 import { formatCurrency } from "../../../domain/format";
 
-import { ThemePalette } from "../../../../src/types/types";
+import { type ThemePalette } from "../../../../src/types/types";
 import { BodyText, SectionTitle, SmallText } from "./ui";
 
 type Colors = ThemePalette;

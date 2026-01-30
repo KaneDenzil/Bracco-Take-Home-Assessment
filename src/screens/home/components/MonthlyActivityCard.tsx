@@ -5,12 +5,12 @@ import { Card } from "../../../components/Card";
 import { Stepper } from "../../../components/Stepper";
 import { formatCurrency } from "../../../domain/format";
 
-import { ThemePalette } from "../../../../src/types/types";
+import { type ThemePalette } from "../../../../src/types/types";
 import { SectionTitle, SmallText } from "./ui";
 
 type MonthlyActivityCard = {
   value: number;
-  onChange: (v: number) => void;
+  onChange: (value: number) => void;
   totalWagerThisMonth: number;
   currency: string;
   colors: ThemePalette;

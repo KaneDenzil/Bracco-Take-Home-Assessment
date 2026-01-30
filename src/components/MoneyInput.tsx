@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, TextInput, View } from "react-native";
-import { Colors } from "../types/types";
+import { type Colors } from "../types/types";
 
 type MoneyInput = {
   value: string;

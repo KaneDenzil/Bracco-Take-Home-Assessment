@@ -13,7 +13,7 @@ export function LottieSplash({ onFinish }: { onFinish: () => void }) {
     <View style={styles.container}>
       <LottieView
         ref={ref}
-        source={require("../../assets/splash.json")}
+        source={require("../../assets/lottie/splash.json")}
         autoPlay
         loop={false}
         onAnimationFinish={onFinish}

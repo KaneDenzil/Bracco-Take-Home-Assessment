@@ -9,7 +9,7 @@ export function useCashbackEstimator(program: Program) {
   const tiers = program.tiers as Tier[];
 
   const [tierId, setTierId] = useState<string>(tiers[0]?.id ?? "straight");
-  const [stakeText, setStakeText] = useState<string>("10");
+  const [stakeText, setStakeText] = useState<string>("5");
   const [wagersPerMonth, setWagersPerMonth] = useState<number>(10);
   const [showHow, setShowHow] = useState<boolean>(false);
 
@@ -42,7 +42,10 @@ export function useCashbackEstimator(program: Program) {
     return out;
   }, [program.max_monthly_cashback_cap, stake, wagersPerMonth, tiers]);
 
-  const remaining = Math.max(0, program.max_monthly_cashback_cap - result.monthly);
+  const remaining = Math.max(
+    0,
+    program.max_monthly_cashback_cap - result.monthly,
+  );
   const totalWagerThisMonth = stake * wagersPerMonth;
   const capWagerNeeded = result.totalWagerNeededForCap;
 

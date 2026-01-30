@@ -49,9 +49,10 @@ export default function HomeScreen() {
   const { select, lightImpact, animate } = useFeedback();
 
   const onTierChange = (id: string) => select(() => setTierId(id));
-  const onStakeChange = (t: string) => animate(() => setStakeText(t));
+  const onStakeChange = (text: string) => animate(() => setStakeText(text));
   const onStakePreset = (n: number) => select(() => setStakeText(String(n)));
-  const onWagersChange = (v: number) => select(() => setWagersPerMonth(v));
+  const onWagersChange = (value: number) =>
+    select(() => setWagersPerMonth(value));
   const onToggleHow = () => lightImpact(() => setShowHow((s) => !s));
 
   return (

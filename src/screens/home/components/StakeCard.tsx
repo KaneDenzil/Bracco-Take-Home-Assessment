@@ -5,7 +5,7 @@ import { Card } from "../../../components/Card";
 import { Chip } from "../../../components/Chip";
 import { MoneyInput } from "../../../components/MoneyInput";
 
-import { ThemePalette } from "../../../../src/types/types";
+import { type ThemePalette } from "../../../../src/types/types";
 import { SectionTitle } from "./ui";
 
 const GAP = 12;
@@ -14,7 +14,7 @@ const DEFAULT_WAGER_SIZES = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 75, 100];
 type StakeCard = {
   currency: string;
   value: string;
-  onChangeText: (t: string) => void;
+  onChangeText: (text: string) => void;
   onSelectPreset: (n: number) => void;
   colors: ThemePalette;
   wagerSizes?: number[];

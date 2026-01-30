@@ -5,7 +5,7 @@ import { Card } from "../../../components/Card";
 import { Segmented } from "../../../components/Segmented";
 import { formatCurrency, formatPercent } from "../../../domain/format";
 
-import { ThemePalette } from "../../../../src/types/types";
+import { type ThemePalette } from "../../../../src/types/types";
 import type { Program, Tier } from "../types";
 import { SectionTitle, SmallText } from "./ui";
 

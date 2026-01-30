@@ -1,6 +1,6 @@
 import React from "react";
 import { Pressable, Text, View } from "react-native";
-import { Colors } from "../types/types";
+import { type Colors } from "../types/types";
 
 export type SegmentedOption = {
   id: string;

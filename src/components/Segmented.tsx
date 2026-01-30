@@ -1,5 +1,6 @@
 import React from "react";
 import { Pressable, Text, View } from "react-native";
+import { Colors } from "../types/types";
 
 export type SegmentedOption = {
   id: string;
@@ -7,24 +8,14 @@ export type SegmentedOption = {
   sublabel?: string;
 };
 
-export function Segmented({
-  value,
-  options,
-  onChange,
-  colors,
-}: {
+type Segmented = {
   value: string;
   options: SegmentedOption[];
   onChange: (id: string) => void;
-  colors: {
-    card: string;
-    text: string;
-    subtext: string;
-    border: string;
-    brand: string;
-    brandSoft: string;
-  };
-}) {
+  colors: Colors;
+};
+
+export function Segmented({ value, options, onChange, colors }: Segmented) {
   return (
     <View
       style={{
@@ -36,12 +27,12 @@ export function Segmented({
       }}
       accessibilityRole="tablist"
     >
-      {options.map((opt, idx) => {
-        const isActive = opt.id === value;
+      {options.map((option, index) => {
+        const isActive = option.id === value;
         return (
           <Pressable
-            key={opt.id}
-            onPress={() => onChange(opt.id)}
+            key={option.id}
+            onPress={() => onChange(option.id)}
             accessibilityRole="tab"
             accessibilityState={{ selected: isActive }}
             style={({ pressed }) => [
@@ -50,7 +41,7 @@ export function Segmented({
                 padding: 10,
                 backgroundColor: isActive ? colors.brand : colors.card,
                 opacity: pressed ? 0.9 : 1,
-                borderRightWidth: idx === options.length - 1 ? 0 : 2,
+                borderRightWidth: index === options.length - 1 ? 0 : 2,
                 borderRightColor: colors.border,
               },
             ]}
@@ -64,14 +55,14 @@ export function Segmented({
               numberOfLines={1}
               adjustsFontSizeToFit
             >
-              {opt.label}
+              {option.label}
             </Text>
-            {!!opt.sublabel && (
+            {!!option.sublabel && (
               <Text
                 style={{ color: colors.subtext, fontSize: 12, marginTop: 3 }}
                 numberOfLines={1}
               >
-                {opt.sublabel}
+                {option.sublabel}
               </Text>
             )}
           </Pressable>

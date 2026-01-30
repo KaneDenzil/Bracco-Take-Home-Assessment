@@ -1,17 +1,6 @@
-export type Palette = {
-  bg: string;
-  card: string;
-  text: string;
-  subtext: string;
-  border: string;
-  brand: string;
-  brandSoft: string;
-  positive: string;
-  warning: string;
-  shadow: string;
-};
+import { ThemePalette } from "../types/types";
 
-export function getPalette(isDark: boolean): Palette {
+export function getTheme(isDark: boolean): ThemePalette {
   const BRACCO_ORANGE = "#ED5522";
   const BRACCO_INK = "#2A2015";
 

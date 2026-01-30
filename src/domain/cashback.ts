@@ -1,31 +1,4 @@
-export type CashbackTier = {
-  id: string;
-  label: string;
-  rate: number;
-};
-
-export type CashbackProgram = {
-  program_name: string;
-  currency: string;
-  max_monthly_cashback_cap: number;
-  period: "monthly";
-  tiers: CashbackTier[];
-};
-
-export type CashbackInput = {
-  stake: number;
-  wagersPerMonth: number;
-  rate: number;
-  cap: number;
-};
-
-export type CashbackResult = {
-  perWager: number;
-  monthly: number;
-  annual: number;
-  isCapped: boolean;
-  totalWagerNeededForCap: number;
-};
+import { CashbackInput, CashbackResult } from "../types/types";
 
 export function roundMoney(amount: number): number {
   return Math.round((amount + Number.EPSILON) * 100) / 100;
@@ -69,7 +42,7 @@ export function parseMoneyInput(text: string): number {
       cleaned.slice(0, firstDot + 1) +
       cleaned.slice(firstDot + 1).replace(/\./g, "");
   }
-  const n = Number(normalized);
-  if (!Number.isFinite(n)) return 0;
-  return clamp(roundMoney(n), 0, 1_000_000);
+  const normalizedNumber = Number(normalized);
+  if (!Number.isFinite(normalizedNumber)) return 0;
+  return clamp(roundMoney(normalizedNumber), 0, 1_000_000);
 }

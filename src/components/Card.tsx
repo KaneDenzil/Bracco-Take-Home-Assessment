@@ -7,17 +7,14 @@ type Palette = {
   shadow?: string;
 };
 
-export function Card({
-  children,
-  colors,
-  elevated = false,
-  style,
-}: {
+type Card = {
   children: React.ReactNode;
   colors: Palette;
   elevated?: boolean;
   style?: StyleProp<ViewStyle>;
-}) {
+};
+
+export function Card({ children, colors, elevated = false, style }: Card) {
   const shadowColorStyle = elevated
     ? { shadowColor: colors.shadow ?? "rgba(0,0,0,0.20)" }
     : null;

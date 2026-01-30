@@ -1,19 +1,16 @@
 import React from "react";
 import { Text, View } from "react-native";
+import { Colors } from "../types/types";
 
-export function StatRow({
-  label,
-  value,
-  hint,
-  colors,
-  testID,
-}: {
+type StatRow = {
   label: string;
   value: string;
   hint?: string;
-  colors: { text: string; subtext: string; brand: string };
+  colors: Colors;
   testID?: string;
-}) {
+};
+
+export function StatRow({ label, value, hint, colors, testID }: StatRow) {
   return (
     <View
       style={{

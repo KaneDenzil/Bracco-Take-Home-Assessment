@@ -1,5 +1,14 @@
 import React from "react";
 import { Text, TextInput, View } from "react-native";
+import { Colors } from "../types/types";
+
+type MoneyInput = {
+  value: string;
+  onChangeText: (text: string) => void;
+  currency: string;
+  colors: Colors;
+  testID?: string;
+};
 
 export function MoneyInput({
   value,
@@ -7,19 +16,7 @@ export function MoneyInput({
   currency,
   colors,
   testID,
-}: {
-  value: string;
-  onChangeText: (text: string) => void;
-  currency: string;
-  colors: {
-    card: string;
-    text: string;
-    subtext: string;
-    border: string;
-    brand: string;
-  };
-  testID?: string;
-}) {
+}: MoneyInput) {
   return (
     <View
       style={{

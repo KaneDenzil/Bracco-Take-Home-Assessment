@@ -1,23 +1,22 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-import type { Palette } from "../../../theme/colors";
+import { ThemePalette } from "../../../../src/types/types";
 import { BodyText } from "./ui";
 
-export function HeaderBlock({
-  programName,
-  colors,
-}: {
+type HeaderBlock = {
   programName: string;
-  colors: Palette;
-}) {
+  colors: ThemePalette;
+};
+
+export function HeaderBlock({ programName, colors }: HeaderBlock) {
   return (
     <View style={styles.container}>
       <Text style={[styles.programName, { color: colors.subtext }]}>
         {programName}
       </Text>
       <Text style={[styles.title, { color: colors.text }]}>
-        Cashback estimator
+        Cashback Estimator
       </Text>
       <BodyText color={colors.subtext}>
         Estimate how much cashback you&apos;ll earn based on your wager size and

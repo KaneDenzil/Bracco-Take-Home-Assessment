@@ -4,10 +4,20 @@ import { StyleSheet, View } from "react-native";
 import { Card } from "../../../components/Card";
 import { Segmented } from "../../../components/Segmented";
 import { formatCurrency, formatPercent } from "../../../domain/format";
-import type { Palette } from "../../../theme/colors";
 
+import { ThemePalette } from "../../../../src/types/types";
 import type { Program, Tier } from "../types";
 import { SectionTitle, SmallText } from "./ui";
+
+type BetTypeCard = {
+  program: Program;
+  tiers: Tier[];
+  value: string;
+  onChange: (id: string) => void;
+  selectedTier: Tier;
+  colors: ThemePalette;
+  elevated: boolean;
+};
 
 export function BetTypeCard({
   program,
@@ -17,15 +27,7 @@ export function BetTypeCard({
   selectedTier,
   colors,
   elevated,
-}: {
-  program: Program;
-  tiers: Tier[];
-  value: string;
-  onChange: (id: string) => void;
-  selectedTier: Tier;
-  colors: Palette;
-  elevated: boolean;
-}) {
+}: BetTypeCard) {
   return (
     <Card colors={colors} elevated={elevated} style={styles.card}>
       <SectionTitle color={colors.text}>Bet type</SectionTitle>

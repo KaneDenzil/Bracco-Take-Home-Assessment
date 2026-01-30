@@ -29,10 +29,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#F15622",
     alignItems: "center",
     justifyContent: "center",
-    zIndex: 9999,
   },
   lottie: {
-    width: 260,
-    height: 260,
+    width: "100%",
+    height: "100%",
   },
 });

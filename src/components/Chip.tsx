@@ -9,23 +9,21 @@ import {
   ViewStyle,
 } from "react-native";
 
-import { getPalette, type Palette } from "../theme/colors";
+import { getTheme } from "../theme/colors";
+import { ThemePalette } from "../types/types";
 
-type ChipColors = Pick<Palette, "card" | "text" | "border" | "brand">;
+type ChipColors = Pick<ThemePalette, "card" | "text" | "border" | "brand">;
 
-export function Chip({
-  label,
-  onPress,
-  colors,
-  style,
-}: {
+type Chip = {
   label: string;
   onPress: () => void;
   colors?: ChipColors;
   style?: StyleProp<ViewStyle>;
-}) {
+};
+
+export function Chip({ label, onPress, colors, style }: Chip) {
   const scheme = useColorScheme();
-  const fallback = useMemo(() => getPalette(scheme === "dark"), [scheme]);
+  const fallback = useMemo(() => getTheme(scheme === "dark"), [scheme]);
   const color = colors ?? fallback;
 
   return (
@@ -61,7 +59,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 999,
+    borderRadius: 25,
     borderWidth: 2,
   },
   label: {

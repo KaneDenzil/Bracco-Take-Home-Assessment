@@ -4,9 +4,17 @@ import { StyleSheet, View } from "react-native";
 import { Card } from "../../../components/Card";
 import { Stepper } from "../../../components/Stepper";
 import { formatCurrency } from "../../../domain/format";
-import type { Palette } from "../../../theme/colors";
 
+import { ThemePalette } from "../../../../src/types/types";
 import { SectionTitle, SmallText } from "./ui";
+
+type MonthlyActivityCard = {
+  value: number;
+  onChange: (v: number) => void;
+  totalWagerThisMonth: number;
+  currency: string;
+  colors: ThemePalette;
+};
 
 export function MonthlyActivityCard({
   value,
@@ -14,13 +22,7 @@ export function MonthlyActivityCard({
   totalWagerThisMonth,
   currency,
   colors,
-}: {
-  value: number;
-  onChange: (v: number) => void;
-  totalWagerThisMonth: number;
-  currency: string;
-  colors: Palette;
-}) {
+}: MonthlyActivityCard) {
   return (
     <Card colors={colors} style={styles.card}>
       <View style={styles.headerRow}>

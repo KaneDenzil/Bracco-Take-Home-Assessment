@@ -3,11 +3,19 @@ import { Pressable, StyleSheet, View } from "react-native";
 
 import { Card } from "../../../components/Card";
 import { formatCurrency } from "../../../domain/format";
-import type { Palette } from "../../../theme/colors";
 
+import { ThemePalette } from "../../../../src/types/types";
 import { BodyText, SectionTitle, SmallText } from "./ui";
 
-type Colors = Palette;
+type Colors = ThemePalette;
+
+type HowItWorksCard = {
+  open: boolean;
+  onToggle: () => void;
+  colors: Colors;
+  cap: number;
+  currency: string;
+};
 
 export function HowItWorksCard({
   open,
@@ -15,13 +23,7 @@ export function HowItWorksCard({
   colors,
   cap,
   currency,
-}: {
-  open: boolean;
-  onToggle: () => void;
-  colors: Colors;
-  cap: number;
-  currency: string;
-}) {
+}: HowItWorksCard) {
   return (
     <Card colors={colors}>
       <Pressable

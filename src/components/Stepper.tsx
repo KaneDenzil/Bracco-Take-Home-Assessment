@@ -1,5 +1,15 @@
 import React from "react";
 import { Pressable, Text, View } from "react-native";
+import { Colors } from "../types/types";
+
+type Stopper = {
+  value: number;
+  min: number;
+  max: number;
+  onChange: (v: number) => void;
+  colors: Colors;
+  testID?: string;
+};
 
 export function Stepper({
   value,
@@ -8,14 +18,7 @@ export function Stepper({
   onChange,
   colors,
   testID,
-}: {
-  value: number;
-  min: number;
-  max: number;
-  onChange: (v: number) => void;
-  colors: { card: string; text: string; border: string; brand: string };
-  testID?: string;
-}) {
+}: Stopper) {
   const decrease = () => onChange(Math.max(min, value - 1));
   const increase = () => onChange(Math.min(max, value + 1));
 

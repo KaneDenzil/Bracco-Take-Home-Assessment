@@ -3,10 +3,18 @@ import { StyleSheet } from "react-native";
 
 import { Card } from "../../../components/Card";
 import { CompareBars } from "../../../components/CompareBars";
-import type { Palette } from "../../../theme/colors";
 
+import { ThemePalette } from "../../../../src/types/types";
 import type { Tier } from "../types";
 import { SectionTitle } from "./ui";
+
+type CompareCard = {
+  tiers: Tier[];
+  values: Record<string, number>;
+  selectedId: string;
+  currency: string;
+  colors: ThemePalette;
+};
 
 export function CompareCard({
   tiers,
@@ -14,13 +22,7 @@ export function CompareCard({
   selectedId,
   currency,
   colors,
-}: {
-  tiers: Tier[];
-  values: Record<string, number>;
-  selectedId: string;
-  currency: string;
-  colors: Palette;
-}) {
+}: CompareCard) {
   return (
     <Card colors={colors} style={styles.card}>
       <SectionTitle color={colors.text}>

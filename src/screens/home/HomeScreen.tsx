@@ -10,7 +10,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import program from "../../data/program.json";
-import { getPalette } from "../../theme/colors";
+import { getTheme } from "../../theme/colors";
 import { space } from "../../theme/spacing";
 
 import { BetTypeCard } from "./components/BetTypeCard";
@@ -25,7 +25,7 @@ import { useFeedback } from "./hooks/useFeedback";
 
 export default function HomeScreen() {
   const isDark = useColorScheme() === "dark";
-  const colors = getPalette(isDark);
+  const colors = getTheme(isDark);
 
   const {
     tiers,

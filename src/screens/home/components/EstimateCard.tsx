@@ -2,10 +2,10 @@ import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
+import { ThemePalette } from "@/src/types/types";
 import { ProgressBar } from "../../../components/ProgressBar";
 import { StatRow } from "../../../components/StatRow";
 import { formatCurrency, formatPercent } from "../../../domain/format";
-import type { Palette } from "../../../theme/colors";
 import { Divider, SectionTitle, SmallText } from "./ui";
 
 type Result = {
@@ -16,6 +16,16 @@ type Result = {
   totalWagerNeededForCap: number;
 };
 
+type EstimateCard = {
+  colors: ThemePalette;
+  currency: string;
+  cap: number;
+  remaining: number;
+  capLabel: string;
+  selectedRate: number;
+  result: Result;
+};
+
 export function EstimateCard({
   colors,
   currency,
@@ -24,15 +34,7 @@ export function EstimateCard({
   capLabel,
   selectedRate,
   result,
-}: {
-  colors: Palette;
-  currency: string;
-  cap: number;
-  remaining: number;
-  capLabel: string;
-  selectedRate: number;
-  result: Result;
-}) {
+}: EstimateCard) {
   const capWagerNeeded = result.totalWagerNeededForCap;
 
   return (
@@ -133,7 +135,7 @@ const styles = StyleSheet.create({
   capPill: {
     paddingHorizontal: 10,
     paddingVertical: 6,
-    borderRadius: 999,
+    borderRadius: 25,
     borderWidth: 1,
   },
   capPillText: {

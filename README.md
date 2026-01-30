@@ -2,9 +2,85 @@
 
 A single-screen **cashback estimator** built in **React Native (Expo)** using **Expo Router**. The UI is data-driven from the provided JSON (tiers + monthly cap) and calculates estimated cashback **per wager**, **monthly**, and **yearly**, including **cap handling**.
 
-## Features
+# Project Structure Flow Diagram (Text)
 
+```
+App Entry
+│
+└── app/
+    │
+    ├── _layout.tsx
+    │   └─ Root stack + global wrappers (theme/header + splash overlay)
+    │
+    └── index.tsx
+        └─ Home route (exports the main screen)
+            │
+            └── src/screens/home/HomeScreen.tsx
+                ├─ Screen composition (puts all sections together)
+                │
+                ├── Uses hooks
+                │   └── src/screens/home/hooks/
+                │       ├── useCashbackEstimator.ts (state, normalized Values, Read Config)
+                │       │
+                │       └── useFeedback.ts (LayoutAnimation wrapper, Haptics Helper)
+                │
+                ├── Renders Home sections (feature-only components)
+                │   └── src/screens/home/components/
+                │       ├── HeaderBlock.tsx
+                │       ├── BetTypeCard.tsx
+                │       ├── StakeCard.tsx
+                │       ├── MonthlyActivityCard.tsx
+                │       ├── EstimateCard.tsx
+                │       ├── CompareCard.tsx
+                │       └── HowItWorksCard.tsx
+                │
+                ├── Uses shared UI primitives (reusable components)
+                │   └── src/components/
+                │       ├── Card.tsx
+                │       ├── Chip.tsx
+                │       ├── MoneyInput.tsx
+                │       ├── Segmented.tsx
+                │       ├── Stepper.tsx
+                │       ├── ProgressBar.tsx
+                │       ├── CompareBars.tsx
+                │       ├── StatRow.tsx
+                │
+                ├── Uses domain logic (pure, testable functions)
+                │   └── src/domain/
+                │       ├── cashback.ts   (cashback math + cap handling + parsing)
+                │       └── format.ts     (formatCurrency + formatPercent)
+                │
+                └── Uses theming tokens/helpers
+                    └── src/theme/
+                        ├── colors.ts   (brand palette + dark/light)
+                        └── spacing.ts  (spacing scale)
 
+Testing & Tooling
+│
+├── jest.config.js
+├── jest.setup.ts
+└── tests
+    ├── src/domain/__tests__/*
+    ├── src/components/__tests__/*
+    └── app/__tests__/*
+
+```
+
+# Project Features
+
+- **Single-screen cashback estimator** (wager size + wagers/month + bet type)
+- **JSON-driven tiers + monthly cap** (front-end only)
+- **Cashback outputs**: per wager, monthly (with cap), yearly, remaining cap, wager needed to hit cap
+- **Cap progress UI** + “cap reached” state
+- **Compare bet types** (bar comparison across tiers)
+- **Expandable “How it works”** math breakdown
+- **Bracco theme** + **light/dark mode**
+- **UX polish**: LayoutAnimation transitions + haptics
+- **Quick preset chips grid** (3 per row)
+- **Gradient estimate card** (LinearGradient)
+- **Expo Router stack** (navigation + header)
+- **Branding**: app icon + adaptive icon + **Lottie animated splash**
+- **Engineering**: TypeScript, separated domain logic/helpers, Jest unit tests
 
 ## Tech Stack
 
@@ -84,7 +160,6 @@ The theme reference was taken from [Bracco Website](https://game.playbracco.com/
 - Lottie JSON: `assets/lottie/splash.json`
 - Background: `#F15622`
 
-
 ## Project Scripts
 
 - `npm run start` — start Expo dev server
@@ -92,5 +167,3 @@ The theme reference was taken from [Bracco Website](https://game.playbracco.com/
 - `npm run android` — run on Android emulator/device
 - `npm test` — run Jest
 - `npm run test:watch` — watch mode
-
-

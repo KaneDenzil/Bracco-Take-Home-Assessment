@@ -4,6 +4,8 @@ A single-screen **cashback estimator** built in **React Native (Expo)** using **
 
 # App Recording
 
+https://github.com/user-attachments/assets/f9fde316-edb3-4a04-b0e5-ca9c9d5a4b84
+
 # Project Structure Flow Diagram
 
 ```

@@ -1,13 +1,6 @@
 import * as Haptics from "expo-haptics";
 import { useCallback } from "react";
-import { LayoutAnimation, Platform, UIManager } from "react-native";
-
-if (
-  Platform.OS === "android" &&
-  UIManager.setLayoutAnimationEnabledExperimental
-) {
-  UIManager.setLayoutAnimationEnabledExperimental(true);
-}
+import { LayoutAnimation } from "react-native";
 
 function animateNext() {
   LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);

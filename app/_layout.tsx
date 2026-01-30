@@ -25,7 +25,7 @@ function LottieSplash({ onFinish }: { onFinish: () => void }) {
     <View style={styles.splash}>
       <LottieView
         ref={ref}
-        source={require("../assets/Lottie/splash.json")}
+        source={require("../assets/lottie/splash.json")}
         autoPlay
         loop={false}
         onAnimationFinish={onFinish}

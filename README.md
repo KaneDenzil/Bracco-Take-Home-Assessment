@@ -2,7 +2,9 @@
 
 A single-screen **cashback estimator** built in **React Native (Expo)** using **Expo Router**. The UI is data-driven from the provided JSON (tiers + monthly cap) and calculates estimated cashback **per wager**, **monthly**, and **yearly**, including **cap handling**.
 
-# Project Structure Flow Diagram (Text)
+# App Recording
+
+# Project Structure Flow Diagram
 
 ```
 App Entry
@@ -10,7 +12,7 @@ App Entry
 └── app/
     │
     ├── _layout.tsx
-    │   └─ Root stack + global wrappers (theme/header + splash overlay)
+    │   └─ Root stack + global wrappers (theme/header + splash screen)
     │
     └── index.tsx
         └─ Home route (exports the main screen)
@@ -68,8 +70,7 @@ Testing & Tooling
 
 # Project Features
 
-- **Single-screen cashback estimator** (wager size + wagers/month + bet type)
-- **JSON-driven tiers + monthly cap** (front-end only)
+- Single-screen cashback estimator (wager size + wagers/month + bet type)
 - **Cashback outputs**: per wager, monthly (with cap), yearly, remaining cap, wager needed to hit cap
 - **Cap progress UI** + “cap reached” state
 - **Compare bet types** (bar comparison across tiers)
@@ -79,7 +80,7 @@ Testing & Tooling
 - **Quick preset chips grid** (3 per row)
 - **Gradient estimate card** (LinearGradient)
 - **Expo Router stack** (navigation + header)
-- **Branding**: app icon + adaptive icon + **Lottie animated splash**
+- **Branding**: app icon + adaptive icon + Lottie animated splash screen
 - **Engineering**: TypeScript, separated domain logic/helpers, Jest unit tests
 
 ## Tech Stack
